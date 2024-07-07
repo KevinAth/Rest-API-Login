@@ -1,7 +1,7 @@
 // Importa los módulos necesarios: express, mongoose y las rutas definidas en "./routes/routes"
 const express = require("express");
 const mongoose = require("mongoose");
-const routes = require("./routes/routes");
+const usersRoutes = require("./routes/usersRoutes");
 const midd = require("./Middlewares/middleware");
 
 // Configura la promesa global de Mongoose para usar Promises nativas de JavaScript
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Utiliza el middleware 'routes' importado para manejar las rutas de la aplicación
-app.use("/", routes());
+app.use("/", usersRoutes());
 
 // Define el número de puerto en el que la aplicación Express va a escuchar
 const port = 5000;

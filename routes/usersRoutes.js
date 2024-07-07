@@ -10,7 +10,7 @@ const {
   RegisterUser,
   LoginUser,
   updateUser,
-} = require("../controllers/controllersRegister");
+} = require("../controllers/controllersUsers");
 
 // Exporta una función anónima que configura las rutas y las devuelve
 module.exports = () => {
