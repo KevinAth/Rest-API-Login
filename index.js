@@ -2,14 +2,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const usersRoutes = require("./routes/usersRoutes");
+const productsRoutes = require("./routes/productsRouter");
 const midd = require("./Middlewares/middleware");
+const ordersRouter = require("./routes/ordersRouter");
 
 // Configura la promesa global de Mongoose para usar Promises nativas de JavaScript
 mongoose.Promise = global.Promise;
 
 // Conecta a la base de datos MongoDB local en el puerto 27017 y la base de datos 'dbusers'
 mongoose
-  .connect("mongodb://localhost:27017/dbusers")
+  .connect("mongodb://localhost:27017/database")
   .then(console.log("Conectado a base de datos:Mongodb")) // Mensaje de éxito al conectar
   .catch(
     (error) => console.error("Error al conectarce a base de datos :", error) // Manejo de error al conectar
@@ -26,6 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Utiliza el middleware 'routes' importado para manejar las rutas de la aplicación
 app.use("/", usersRoutes());
+
+app.use("/", productsRoutes());
+
+app.use("/", ordersRouter());
 
 // Define el número de puerto en el que la aplicación Express va a escuchar
 const port = 5000;
